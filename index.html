@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DROGOWSKAZ — utrudnienia drogowe</title>
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1E88E5">
+
+  <!-- Leaflet (prosta mapa) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>DROGOWSKAZ</h1>
+    <div class="controls">
+      <label for="miasto">Miasto:</label>
+      <select id="miasto"></select>
+      <button id="themeToggle" aria-label="Przełącz tryb">🌙/☀️</button>
+      <button id="addBtn" title="Dodaj utrudnienie">➕</button>
+      <button id="exportBtn" title="Eksportuj dane">⬇️</button>
+      <input id="importFile" type="file" accept=".json" style="display:none" />
+      <button id="importBtn" title="Importuj dane">⬆️</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="map" class="map"></section>
+    <aside class="panel">
+      <h2>Utrudnienia</h2>
+      <ul id="utrudnieniaList"></ul>
+    </aside>
+  </main>
+
+  <!-- Add modal -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <h3>Dodaj utrudnienie</h3>
+      <label>Typ:
+        <select id="utype"><option value="punkt">Punkt</option><option value="linia">Linia</option><option value="obszar">Obszar</option></select>
+      </label>
+      <label>Tytuł: <input id="utitle" /></label>
+      <label>Opis: <input id="udesc" /></label>
+      <label>Współrzędne (lat,lng) lub lista dla linii/obszaru (oddzielaj średnikiem): <input id="ucoords" placeholder="51.531,20.008;51.532,20.010" /></label>
+      <div class="modal-actions">
+        <button id="saveU">Zapisz</button>
+        <button id="cancelU">Anuluj</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <small>Projekt DROGOWSKAZ — przykładowe dane. Joanna</small>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
